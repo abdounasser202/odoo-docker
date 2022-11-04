@@ -1,5 +1,7 @@
 version: '3'
+
 services:
+
   src:
     container_name: odoo15-src
     image: odoo:15.0
@@ -10,9 +12,11 @@ services:
     volumes:
       - odoo15-src-data:/var/lib/odoo
       - ./odoo.conf:/etc/odoo/odoo.conf
-      - ./owl-bookstore:/mnt/extra-addons
+      - ./source/enterprise:/mnt-enterprise
+      - ./modules/addons:/mnt/addons
+
   db:
-    container_name: odoo15-db
+    container_name: odoo-db
     image: postgres:12
     environment:
       - POSTGRES_DB=postgres
@@ -22,7 +26,8 @@ services:
     ports:
       - "5542:5432"
     volumes:
-      - odoo15-db-data:/var/lib/postgresql/data/pgdata
+      - odoo-db-data:/var/lib/postgresql/data/pgdata
+
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4:6.1
@@ -37,8 +42,9 @@ services:
     volumes:
       - pgadmin-data:/var/lib/pgadmin
     links:
-      - "db:psql-schooler-server"
+      - "db:psql-odoo-server"
+
 volumes:
   odoo15-src-data:
-  odoo15-db-data:
+  odoo-db-data:
   pgadmin-data:

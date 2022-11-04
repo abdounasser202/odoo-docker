@@ -1,1 +1,1 @@
-# odoo-docker
+# Odoo docker environment
