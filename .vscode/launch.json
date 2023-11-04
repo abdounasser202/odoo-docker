@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Odoo Run",
+            "type": "python",
+            "request": "attach",
+            "port": 8069,
+            "debugServer": 8888,
+            "host": "localhost",
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/workspace",
+                    "remoteRoot": "/mnt",
+                },
+            ],
+            "logToFile": true,
+            "justMyCode": false
+        }
+    ]
+}

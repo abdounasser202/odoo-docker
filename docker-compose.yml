@@ -2,49 +2,57 @@ version: '3'
 
 services:
 
-  src:
-    container_name: odoo15-src
-    image: odoo:15.0
+  odoo:
+    platform: linux/amd64
+    container_name: ${PROJECT_NAME}-ODOO
+    build:
+      context: .
+      dockerfile: Dockerfile
     depends_on:
       - db
     ports:
       - "8069:8069"
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
     volumes:
-      - odoo15-src-data:/var/lib/odoo
+      - odoo-data:/var/lib/odoo
       - ./odoo.conf:/etc/odoo/odoo.conf
-      - ./source/enterprise:/mnt-enterprise
-      - ./modules/addons:/mnt/addons
+      - ./workspace:/mnt
 
   db:
-    container_name: odoo-db
-    image: postgres:12
+    container_name: ${PROJECT_NAME}-DB
+    image: postgres:13
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
       - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
-      - "5542:5432"
+      - "5432:5432"
+    restart: unless-stopped
     volumes:
-      - odoo-db-data:/var/lib/postgresql/data/pgdata
+      - postgres-data:/var/lib/postgresql/data/pgdata
 
   pgadmin:
-    container_name: pgadmin
-    image: dpage/pgadmin4:6.1
+    container_name: ${PROJECT_NAME}-PGADMIN
+    image: dpage/pgadmin4:7.3
     depends_on:
       - db
     environment:
-      PGADMIN_DEFAULT_EMAIL: dev@nasser.cm
-      PGADMIN_DEFAULT_PASSWORD: 123
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
       PGADMIN_LISTEN_PORT: 80
     ports:
       - "8099:80"
+    tty: true
+    restart: unless-stopped
     volumes:
       - pgadmin-data:/var/lib/pgadmin
     links:
       - "db:psql-odoo-server"
 
 volumes:
-  odoo15-src-data:
-  odoo-db-data:
+  odoo-data:
+  postgres-data:
   pgadmin-data:
