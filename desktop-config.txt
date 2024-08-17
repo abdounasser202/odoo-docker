@@ -1,0 +1,6 @@
+oh-my-zsh
+doomemacs
+docker
+node
+npm
+rustc
