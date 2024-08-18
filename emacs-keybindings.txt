@@ -1,52 +1,52 @@
-C  -->  Ctrl
-M  -->  alt
-S  -->  shift
+Buffer                      --> the text inside of a file
+Window                      --> a way to view a specific portion of a buffer
+Frame                       --> consist of multiple windows and each window displays a buffer
+Learning more key bindings  -->  alt-x (describe-bindings) and Ctrl-h k (describe-key)
 
-Buffer  --> the text inside of a file
-Window  --> a way to view a specific portion of a buffer
-Frame   --> consist of multiple windows and each window displays a buffer
+find-a-file                                Ctrl-x Ctrl-f (new-file if file not exist it can be created)
+open-directory                             alt-x (then type dired and enter the directory to navigate)
+open-file                                  Ctrl-o (when you are on the active file)
+undo                                       Ctrl-x u
 
-split-window-vertical                      C-x 3
-split-window-horizontal                    C-x 2
+list-all-buffers                           Ctrl-x Ctrl-b
+next-buffer                                Ctrl-x <right-arrow>
+previous-buffer                            Ctrl-x <left-arrow>
+select-buffer-by-name                      Ctrl-x b
+save-buffer                                Ctrl-x Ctrl-s
+kill current buffer                        Ctrl-x k
+quit-emacs                                 Ctrl-x Ctrl-c
 
-close-all-other-windows                    C-x 1
-close-current-window                       C-x 0
+switch-between-windows                     Ctrl-x o
+scroll-other-window                        Ctrl-alt-v
+scroll-back-other-window                   Ctrl-S-alt-v
 
-switch-between-windows                     C-x o
-scroll-other-window                        C-M-v
-scroll-back-other-window                   C-S-M-v
+split-window-vertical                      Ctrl-x 3
+split-window-horizontal                    Ctrl-x 2
 
-expand-window-horizontally-left            C-x }
-expand-window-horizontally-right           C-x {
-expand-window-vertically                   C-x ^
+close-all-other-windows                    Ctrl-x 1
+close-current-window                       Ctrl-x 0
 
-next-buffer                                C-x <right-arrow>
-previous-buffer                            C-x <left-arrow>
-list-all-buffers                           C-x C-b
-select-buffer-by-name                      C-x b
-save-buffer                                C-x C-s
-undo                                       C-x u
+expand-window-horizontally-left            Ctrl-x }
+expand-window-horizontally-right           Ctrl-x {
+expand-window-vertically                   Ctrl-x ^
 
-find-a-file                                C-x C-f (new-file if file not exist it can be created)
-new-file                                   C-x C-f
+select-text                                Ctrl-space alt-f
+cut-text                                   Ctrl-w
+copy-text                                  alt-w
+paste-text                                 Ctrl-y
+empty-line-below                           Ctrl-o
 
-select-text                                C-space M-f
-cut-text                                   C-w
-copy-text                                  M-w
-paste-text                                 C-y
-empty-line-below                           C-o
+next-line                                  Ctrl-n
+previous-line                              Ctrl-p
 
-next-line                                  C-n
-previous-line                              C-p
+forward-character                          Ctrl-f
+backward-character                         Ctrl-b
 
-forward-character                          C-f
-backward-character                         C-b
+forward-move-by-word                       alt-f
+backward-move-by-word                      alt-b
 
-forward-move-by-word                       M-f
-backward-move-by-word                      M-b
+beginning-of-line-move                     Ctrl-a
+end-of-line-move                           Ctrl-e
 
-beginning-of-line-move                     C-a
-end-of-line-move                           C-e
-
-search-text-forward                        C-s <text> (and C-s again to navigate through them)
-search-text-backward                       C-r <text> (and C-r again to navigate through them)
+search-text-forward                        Ctrl-s <text> (and Ctrl-s again to navigate through them)
+search-text-backward                       Ctrl-r <text> (and Ctrl-r again to navigate through them)
